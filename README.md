@@ -18,7 +18,8 @@ nothing is found.
 
 ## roadmap
 
-- [ ] draw an example,
+- [ ] add metadata, version number,
+- [ ] draw an example for the README,
 - [ ] iterate to find the best folding point,
 - [ ] write tests:
   - [ ] sequence too short,
@@ -26,4 +27,5 @@ nothing is found.
   - [ ] skewed cases (1/4, 3/4),
   - [ ] false-positive case,
   - [ ] cases with mutations,
+  - [ ] cases with a folding plateau,
   - [ ] cases with two folding points
