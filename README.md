@@ -18,6 +18,7 @@ nothing is found.
 
 ## roadmap
 
+- [X] first draft,
 - [ ] add metadata, version number,
 - [ ] draw an example for the README,
 - [ ] iterate to find the best folding point,
