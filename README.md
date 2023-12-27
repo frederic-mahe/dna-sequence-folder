@@ -19,6 +19,8 @@ nothing is found.
 ## roadmap
 
 - [X] first draft,
+- [X] record all dissimilarities,
+- [ ] compute a Simple Moving Average (window size = 3),
 - [ ] add metadata, version number,
 - [ ] draw an example for the README,
 - [ ] iterate to find the best folding point,
@@ -30,3 +32,5 @@ nothing is found.
   - [ ] cases with mutations,
   - [ ] cases with a folding plateau,
   - [ ] cases with two folding points
+- [ ] add a minimal threshold based on the number of shared kmers
+      divided by the length of the longest part?
