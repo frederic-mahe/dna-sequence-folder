@@ -21,6 +21,7 @@ nothing is found.
 - [X] first draft,
 - [X] record all dissimilarities,
 - [ ] compute a Simple Moving Average (window size = 3),
+- [ ] larger window means smoother average,
 - [ ] add metadata, version number,
 - [ ] draw an example for the README,
 - [ ] iterate to find the best folding point,
