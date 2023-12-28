@@ -28,8 +28,8 @@ if nothing is found.
 - [ ] write tests:
   - [X] sequence too short,
   - [X] invalid sequence,
-  - [ ] perfect case (1/2),
-  - [ ] skewed cases (1/4, 3/4),
+  - [X] perfect case (1/2),
+  - [X] skewed cases (1/4, 3/4),
   - [ ] false-positive case,
   - [ ] cases with mutations,
   - [ ] cases with a folding plateau,
