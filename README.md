@@ -18,19 +18,19 @@ if nothing is found.
 
 ## roadmap
 
-- [X] first draft,
-- [X] record all dissimilarities,
-- [X] iterate to find the best folding point,
+- [x] first draft,
+- [x] record all dissimilarities,
+- [x] iterate to find the best folding point,
 - [ ] compute a Simple Moving Average (window size = 3),
 - [ ] larger window means smoother average,
 - [ ] add metadata, version number,
 - [ ] draw an example for the README,
 - [ ] write tests:
-  - [X] sequence too short,
-  - [X] invalid sequence,
-  - [X] perfect case (1/2),
-  - [X] skewed cases (1/4, 3/4),
-  - [ ] false-positive case,
+  - [x] sequence too short,
+  - [x] invalid sequence,
+  - [x] perfect case (1/2),
+  - [x] skewed cases (1/4, 3/4),
+  - [x] false-positive case,
   - [ ] cases with mutations,
   - [ ] cases with a folding plateau,
   - [ ] cases with two folding points
