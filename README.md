@@ -12,8 +12,8 @@ the second part starts.
 
 The python script `find_folding_point.py` uses *k*-mer counts to try
 to find the folding point in a given sequence. It returns a positive
-integer value representing the folding point position, or zero if
-nothing is found.
+integer value representing a possible folding point position, or zero
+if nothing is found.
 
 
 ## roadmap
