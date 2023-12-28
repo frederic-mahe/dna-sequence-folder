@@ -27,16 +27,16 @@ def parse_arguments():
     return parser.parse_args()
 
 
-def is_valid_dna_sequence(sequence):
+def is_not_valid_dna_sequence(sequence):
     valid_symbols = {"A", "C", "G", "T"}
-    return all(symbol in valid_symbols for symbol in sequence)
+    return not all(symbol in valid_symbols for symbol in sequence)
 
 
 def checks(sequence, kmer_length):
     if len(sequence) < 2 * kmer_length:
         print("sequence is too short", file=sys.stderr)
         sys.exit(-1)
-    if not is_valid_dna_sequence(sequence):
+    if is_not_valid_dna_sequence(sequence):
         print("sequence contains undetermined symbols", file=sys.stderr)
         sys.exit(-1)
 
