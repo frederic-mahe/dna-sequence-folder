@@ -1,3 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+   find the folding point in a duplex sequence
+"""
+
+__author__ = "Frédéric Mahé <frederic.mahe@cirad.fr>"
+__date__ = "2023/12/28"
+__version__ = "$Revision: 1.0"
+
+
 import argparse
 import copy
 import sys
