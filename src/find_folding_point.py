@@ -100,8 +100,14 @@ def compute_dissimilarities(
 
 
 def find_the_best_folding_point(dissimilarities):
-    # in practice, find the first minimal folding point
-    return dissimilarities.index(min(dissimilarities))
+    # find the first minimal folding point
+    lowest_dissimilarity = min(dissimilarities)
+    first_occurrence = dissimilarities.index(lowest_dissimilarity)
+    # find the middle of the plateau if there is one
+    current_index = first_occurrence
+    while dissimilarities[current_index] == lowest_dissimilarity:
+        current_index += 1
+    return first_occurrence + (current_index - first_occurrence) // 2
 
 
 def main():
