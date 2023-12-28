@@ -20,13 +20,14 @@ nothing is found.
 
 - [X] first draft,
 - [X] record all dissimilarities,
+- [X] iterate to find the best folding point,
 - [ ] compute a Simple Moving Average (window size = 3),
 - [ ] larger window means smoother average,
 - [ ] add metadata, version number,
 - [ ] draw an example for the README,
-- [ ] iterate to find the best folding point,
 - [ ] write tests:
-  - [ ] sequence too short,
+  - [X] sequence too short,
+  - [X] invalid sequence,
   - [ ] perfect case (1/2),
   - [ ] skewed cases (1/4, 3/4),
   - [ ] false-positive case,
