@@ -156,10 +156,56 @@ python3 ${FOLDER}${SCRIPT} \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
-DESCRIPTION="returns zero if there is no  (positive integer)"
+DESCRIPTION="returns zero if there is no folding point (no overlap)"
 python3 ${FOLDER}${SCRIPT} \
         --sequence AAAAAGGGGG 2> /dev/null | \
-    grep -qw "[0-9]" && \
+    grep -qw "0" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+DESCRIPTION="finds a folding point (shortest perfect case)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAATTTTT 2> /dev/null | \
+    grep -qw "5" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+DESCRIPTION="finds a folding point (perfect case 1/2)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAAAAAAATTTTTTTTTT 2> /dev/null | \
+    grep -qw "10" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+DESCRIPTION="finds a folding point (skewed case 3/4)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAAAAAAAAAAAATTTTT 2> /dev/null | \
+    grep -qw "15" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+DESCRIPTION="finds a folding point (skewed case 1/4)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAATTTTTTTTTTTTTTT 2> /dev/null | \
+    grep -qw "5" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+
+## false positive: worst-case scenario
+## de Bruijn sequences (shortest possible sequences containing all
+## possible 3-mers, repeated only once). Here s1 and s2 are different
+## 66-nt long de Bruijn sequences containing the exact same list of
+## 3-mers. So, their k-mer profiles are exactly the same (except for
+## four 3-mers in the contact zone)
+s1="AAACAAGAATACCACGACTAGCAGGAGTATCATGATTCCCGCCTCGGCGTCTGCTTGGGTGTTTAA"
+s2="GGGTGGCGGAGTTGTCGTAGCTGCCGCAGATGACGAATTTCTTATCCTCATACTAACCCACAAAGG"
+DESCRIPTION="finds a folding point (de Bruijn false-positives)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence ${s1}${s2} \
+        --kmer_length 3 \
+        2> /dev/null | \
+    grep -qw "64" && \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
