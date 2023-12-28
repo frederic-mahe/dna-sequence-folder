@@ -232,4 +232,14 @@ python3 ${FOLDER}${SCRIPT} \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
+# AAAAATTTTTAAAAATTTTT
+#      |    |    |
+# could be folded at three position, our method reports the middle one
+DESCRIPTION="finds a folding point (case with several folding points)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAATTTTTAAAAATTTTT 2> /dev/null | \
+    grep -qw "10" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
 exit 0
