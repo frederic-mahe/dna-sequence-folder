@@ -191,7 +191,6 @@ python3 ${FOLDER}${SCRIPT} \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
-
 ## false positive: worst-case scenario
 ## de Bruijn sequences (shortest possible sequences containing all
 ## possible 3-mers, repeated only once). Here s1 and s2 are different
@@ -205,9 +204,32 @@ python3 ${FOLDER}${SCRIPT} \
         --sequence ${s1}${s2} \
         --kmer_length 3 \
         2> /dev/null | \
-    grep -qw "64" && \
+    grep -qw "66" && \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
+DESCRIPTION="finds a folding point (with 1 mutation)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AACAAAAAAATTTTTTTTTT 2> /dev/null | \
+    grep -qw "10" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+DESCRIPTION="finds a folding point (with 2 mutations)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AACAAAAAAATTTTTCTTTT 2> /dev/null | \
+    grep -qw "10" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+## plateau ranging from position 6 to 16; returns the middle of the plateau
+#   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
+# [18, 17, 16, 15, 14, 12, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 12, 14, 15, 16, 17, 18]
+DESCRIPTION="finds a folding point (with a plateau)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAAAAAAACCTTTTTTTTTT 2> /dev/null | \
+    grep -qw "11" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
 
 exit 0
