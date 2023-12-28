@@ -54,8 +54,8 @@ def generate_kmers(kmer_length):
     return kmer_dict
 
 
-def count_kmers(kmer_list, kmer_dict, split):
-    for kmer in kmer_list[0:split]:
+def count_kmers(kmer_list, kmer_dict, folding_point):
+    for kmer in kmer_list[0:folding_point]:
         kmer_dict[kmer] += 1
 
 
@@ -82,6 +82,28 @@ def count_dict_differences(dict1, dict2):
     return sum(abs(val1 - val2) for val1, val2 in zipped_values)
 
 
+def compute_dissimilarities(
+    forward_kmers, forward_dict, reverse_kmers, reverse_dict, sequence_length
+):
+    dissimilarities = [0] * (sequence_length + 1)
+    # dissimilarity for all possible folding points
+    for folding_point in range(0, sequence_length + 1):
+        count_kmers(forward_kmers, forward_dict, folding_point)
+        count_kmers(reverse_kmers, reverse_dict, sequence_length - folding_point)
+        dissimilarities[folding_point] = count_dict_differences(
+            forward_dict, reverse_dict
+        )
+        reset_dictionary_values(forward_dict)
+        reset_dictionary_values(reverse_dict)
+
+    return dissimilarities
+
+
+def find_the_best_folding_point(dissimilarities):
+    # in practice, find the first minimal folding point
+    return dissimilarities.index(min(dissimilarities))
+
+
 def main():
     # parse command line
     args = parse_arguments()
@@ -98,28 +120,17 @@ def main():
     # extract kmers
     forward_kmers = extract_kmers(sequence, kmer_length)
     reverse_kmers = extract_kmers(reverse_complement(sequence), kmer_length)
-    print(forward_kmers, file=sys.stderr)
-    print(reverse_kmers, file=sys.stderr)
 
+    # compute dissimilarities for all possible folding points
     sequence_length = len(sequence)
-    # dissimilarity for all possible splits
-    for split in range(0 + 1, sequence_length):
-        count_kmers(forward_kmers, forward_dict, split)
-        count_kmers(reverse_kmers, reverse_dict, sequence_length - split)
+    dissimilarities = compute_dissimilarities(
+        forward_kmers, forward_dict, reverse_kmers, reverse_dict, sequence_length
+    )
+    print(dissimilarities, file=sys.stderr)
 
-        # compute similarity
-        n_differences = count_dict_differences(forward_dict, reverse_dict)
+    print(find_the_best_folding_point(dissimilarities))
 
-        # Display the generated list of kmers
-        print(split, n_differences, sep="\t", file=sys.stderr)
-
-        reset_dictionary_values(forward_dict)
-        reset_dictionary_values(reverse_dict)
-
-    # find the best split
-    print(0)
-
-    return
+    return 0
 
 
 if __name__ == "__main__":
