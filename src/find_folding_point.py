@@ -143,7 +143,6 @@ def main():
     dissimilarities = compute_dissimilarities(
         forward_kmers, forward_dict, reverse_kmers, reverse_dict, sequence_length
     )
-    print(dissimilarities, file=sys.stderr)
 
     print(find_the_best_folding_point(dissimilarities))
 
