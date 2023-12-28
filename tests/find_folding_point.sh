@@ -156,4 +156,12 @@ python3 ${FOLDER}${SCRIPT} \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
+DESCRIPTION="returns zero if there is no  (positive integer)"
+python3 ${FOLDER}${SCRIPT} \
+        --sequence AAAAAGGGGG 2> /dev/null | \
+    grep -qw "[0-9]" && \
+    success "${DESCRIPTION}" || \
+        failure "${DESCRIPTION}"
+
+
 exit 0
