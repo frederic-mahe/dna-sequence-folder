@@ -25,10 +25,11 @@ AAAAA
 The folding point is the last position in the first part, after which
 the second part starts.
 
-The python script `find_folding_point.py` uses *k*-mer counts to try
-to find the folding point in a given sequence. It returns a positive
-integer value representing a possible folding point position, or zero
-if nothing is found.
+The python script
+[`find_folding_point.py`](https://raw.githubusercontent.com/frederic-mahe/dna-sequence-folder/main/src/find_folding_point.py)
+uses *k*-mer counts to try to find the folding point in a given
+sequence. It returns a positive integer value representing a possible
+folding point position, or zero if nothing is found.
 
 
 ## roadmap
