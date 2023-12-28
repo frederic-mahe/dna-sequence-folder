@@ -36,7 +36,8 @@ folding point position, or zero if nothing is found.
 
 ```sh
 python3 ./find_folding_point.py --help
-
+```
+```sh
 python3 ./find_folding_point.py --sequence AAAAATTTTT
 ```
 
