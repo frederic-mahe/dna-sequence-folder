@@ -31,8 +31,8 @@ if nothing is found.
   - [x] perfect case (1/2),
   - [x] skewed cases (1/4, 3/4),
   - [x] false-positive case,
-  - [ ] cases with mutations,
-  - [ ] cases with a folding plateau,
+  - [x] cases with mutations,
+  - [x] cases with a folding plateau,
   - [ ] cases with two folding points
 - [ ] add a minimal threshold based on the number of shared kmers
       divided by the length of the longest part?
