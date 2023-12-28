@@ -242,4 +242,14 @@ python3 ${FOLDER}${SCRIPT} \
     success "${DESCRIPTION}" || \
         failure "${DESCRIPTION}"
 
+
+# ## speed test (90 seconds for ten 10-kB sequences)
+# LENGTH=10000
+# SEQ=$(yes "A" | head -n "${LENGTH}" | tr -d "\n")
+# date
+# for i in {1..10} ; do
+#     python3 ${FOLDER}${SCRIPT} --sequence ${SEQ} > /dev/null
+# done
+# date
+
 exit 0
