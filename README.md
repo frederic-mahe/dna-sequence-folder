@@ -32,6 +32,17 @@ sequence. It returns a positive integer value representing a possible
 folding point position, or zero if nothing is found.
 
 
+## usage
+
+```sh
+python3 ./find_folding_point.py --help
+
+python3 ./find_folding_point.py --sequence AAAAATTTTT
+```
+
+returns `5`.
+
+
 ## roadmap
 
 - [x] first draft,
