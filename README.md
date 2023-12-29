@@ -60,6 +60,8 @@ returns `5`.
   - [x] cases with mutations,
   - [x] cases with a folding plateau,
   - [x] cases with two folding points
+- [ ] faster strategy to find the folding point? (gradient-based
+      optimization, Nelder-Mead, genetic algorithms)
 - [ ] compute a Simple Moving Average (window size = 3),
 - [ ] larger window means smoother average,
 - [ ] add a minimal threshold based on the number of shared kmers
